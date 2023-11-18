@@ -1,0 +1,66 @@
+/* html{
+    border: 2px blue solid;
+} */
+
+body{
+    background-image: url('../content/purplegalaxy.png');
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.indexNavBar{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    border: 2px blue solid;
+    position: sticky;
+    width: 100%;
+    top: 0px;
+    background-color: black;
+    color: white;
+}
+
+.interact{
+    border:2px yellow solid;
+    background-color: blue;
+    text-align: center;
+    margin: 1%;
+}
+
+.mainBodyDiv{
+    display: grid;
+    grid-template-columns: auto;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: black;
+}
+
+.introductory{
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 50% auto;
+    grid-template-rows: auto 50% auto;
+}
+
+.introContent{
+    text-align: center;
+    font-size: 1.75vw;
+    color: white;
+    grid-column: 2;
+    grid-row: 2;
+    background-color: rgba(0,0,0,0.80);
+    border: 0px;
+    border-radius: 25px;
+    border-color: white;
+    border-style: solid;
+
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.introText{
+    grid-row: 2;
+}
