@@ -38,16 +38,17 @@ body{
     background-color: black;
 }
 
+
 .introductory{
     height: 100%;
     display: grid;
-    grid-template-columns: auto 50% auto;
-    grid-template-rows: auto 50% auto;
+    grid-template-columns: auto 40vw auto;
+    grid-template-rows: auto 30vh auto;
 }
 
 .introContent{
     text-align: center;
-    font-size: 1.75vw;
+    font-size: 2.8vw;
     color: white;
     grid-column: 2;
     grid-row: 2;
@@ -59,8 +60,37 @@ body{
 
     display: grid;
     grid-template-columns: auto;
+    transition: all 1.25s;
+}
+
+.introContent:hover{
+    text-align: center;
+    font-size: 3vw;
+    color: white;
+    grid-column: 2;
+    grid-row: 2;
+    background-color: rgba(20, 20, 20, 0.9);
+    border: 0px;
+    border-radius: 25px;
+    border-color: white;
+    border-style: solid;
+
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.introTitle{
+    grid-row: 2;
 }
 
 .introText{
-    grid-row: 2;
+    grid-row: 3;
+    color:white;
+    transition: color 0.5s;
+}
+
+.introText2{
+    grid-row: 3;
+    color:rgba(0,0,0,0);
+    transition: color 0.5s;
 }
