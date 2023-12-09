@@ -1,25 +1,67 @@
 window.onload = function(){
+    InitializeTitles();
     TextChanger();  
     
 }
 
-var arr_Titles = [
-    "Ready to serve", "Game Development", "Unity 3D & 2D", "Game Modding",
-    "Software Dev", "MVC ASP.NET", ".NET FRAMEWORK",
-    "Databases", "MySQL", "SQLite", "Microsoft SQL", "NoSQL", "MonggoDB",
-    "Web Development", "HTML", "CSS", "JS", "JSQuery", "AJAX", "Bootstrap"];
-var timer = 0; var changeVal = 0;
+var arr_Titles;
+var timer = 2000; var titleVal = 0;
+var subVal = 0; var cts = false;
+
+function InitializeTitles(){
+    var misc = {Title: "Ready to serve:", Content: ["Front-end", "Back-end", "Fullstack", "Software Dev"] };
+    var gD = {
+        Title:"Game Dev:", 
+        Content: [
+            "Unity 3D",
+            "Unity 2D",
+            "Features Dev",
+            "Game Design",
+            "Pixel Art",
+        ] 
+    };
+
+    var softDev = {
+        Title:"Software Dev:", 
+        Content: [
+            ".Net Framework",
+            "Windows Forms",
+            "Systems Development",
+            "Backend APIs",
+            "Integrations"
+        ] 
+    };
+
+    var fullStack = {
+        Title:"Web Stack:", 
+        Content: [
+            "MVC ASP.NET",
+            "RESTful APIs Dev",
+            "HTML/CSS",
+            "JavaScript",
+            "AJAX", "JQuery",
+            "Bootstrap", "WordPress"
+        ] 
+    };
+    var dB = {
+        Title:"Database Stack:", 
+        Content: [
+            "MySQL",
+            "SQLlite",
+            "MonggoDB",
+            "Microsoft SQL",
+        ] 
+    };
+
+    arr_Titles = [ misc, gD, softDev, fullStack, dB ];
+}
 
 async function TextChanger(){
-    var portTitle = $("#changeText");
+    var portTitle = $("#changeTextTitle");
+    var portSub = $("#changeTextSubtitle");
 
-    portTitle.addClass("introText2");
-    await FadeOutText(500);
-    ChangeText(portTitle);
-    await FadeOutText(300);
-    portTitle.removeClass("introText2");
-    await FadeOutText(300);
-    
+    ChangeTextTitle(portTitle, portSub);
+    FadeOutText(250);
     setTimeout(TextChanger, timer);
 }
 
@@ -32,24 +74,57 @@ async function FadeOutText(ms){
     return doneFade;
 }
 
-function ChangeText(portTitle){
+async function ChangeTextTitle(portTitle, portSub){
     
-    curr_title = portTitle.text();
-    
-    var curr_title;
     var arrval = arr_Titles.length - 1;
+    var tempval = titleVal;
+    if(cts == true){
+        titleVal++;
+        cts = false;
+    }
+    console.log("titleVal: " + titleVal + "\narrval: " + arrval);
+    if(titleVal == arrval){
+        titleVal = 0;
+        console.log("Firing?");
+    }
 
-    console.log("val: " + changeVal);
-    if(changeVal <= arrval){
-        timer = 700;
-        changeVal++;
+    if(tempval == titleVal){
+        portTitle.text(arr_Titles[titleVal].Title);
+        cts = await ChangeTextSub(portSub);
     }
-    if(changeVal > arrval){
-        changeVal = 0;
-        timer = 5000;
+    else{
+        if(titleVal <= arrval){
+            portTitle.addClass("introText2");
+            portSub.addClass("introText2");
+            await FadeOutText(750);
+            portTitle.text(arr_Titles[titleVal].Title);
+            portSub.text(arr_Titles[titleVal].Content[subVal]);
+            await FadeOutText(500);
+            portTitle.removeClass("introText2");
+            portSub.removeClass("introText2");
+            subVal++;
+        }
     }
-    portTitle.text(arr_Titles[changeVal]);
-    
+
 }
 
+async function ChangeTextSub(portSub){
+    
+    var continueNext = false;
+    var arrval = arr_Titles[titleVal].Content.length - 1;
 
+    portSub.addClass("introText2");
+    await FadeOutText(750);
+    portSub.text(arr_Titles[titleVal].Content[subVal]);
+    await FadeOutText(500);
+    portSub.removeClass("introText2");
+
+    if(subVal >= arrval){
+        continueNext = true;
+        subVal = 0;
+    }
+    else{
+        subVal++;
+    }
+    return continueNext;
+}

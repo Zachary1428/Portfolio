@@ -42,13 +42,17 @@ body{
 .introductory{
     height: 100%;
     display: grid;
-    grid-template-columns: auto 40vw auto;
+    grid-template-columns: auto 50vw auto;
     grid-template-rows: auto 30vh auto;
+}
+
+.introTitle{
+    font-size: 3.5vw;
 }
 
 .introContent{
     text-align: center;
-    font-size: 2.8vw;
+    font-size: 2.5vw;
     color: white;
     grid-column: 2;
     grid-row: 2;
@@ -65,7 +69,7 @@ body{
 
 .introContent:hover{
     text-align: center;
-    font-size: 3vw;
+    font-size: 2.6vw;
     color: white;
     grid-column: 2;
     grid-row: 2;
@@ -84,13 +88,21 @@ body{
 }
 
 .introText{
-    grid-row: 3;
     color:white;
+    margin-left: 0.25vw;
     transition: color 0.5s;
 }
 
 .introText2{
-    grid-row: 3;
     color:rgba(0,0,0,0);
+    margin-left: 0.25vw;
     transition: color 0.5s;
+}
+
+.changeTextHolder {
+    display: grid;
+    grid-template-columns: auto 35%;
+    justify-content: center;
+    text-wrap: nowrap;
+    grid-row: 3;
 }
