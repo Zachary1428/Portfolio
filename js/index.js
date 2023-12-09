@@ -18,6 +18,7 @@ function InitializeTitles(){
             "Features Dev",
             "Game Design",
             "Pixel Art",
+            "Game Modding"
         ] 
     };
 
